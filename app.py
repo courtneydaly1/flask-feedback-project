@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///feedback"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "sososoSecret"
-app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 # toolbar= DebugToolbarExtention(app)
 
@@ -43,6 +43,7 @@ def register():
         
         user= User.register(username, password, first_name, last_name, email)
         
+        db.session.add(user)
         db.session.commit()
         session['username']= user.username
         

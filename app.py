@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "sososoSecret"
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = True
 
-toolbar= DebugToolbarExtention(app)
+# toolbar= DebugToolbarExtention(app)
 
 connect_db(app)
 app.app_context().push()
@@ -48,7 +48,7 @@ def register():
         
         return redirect(f"/users/{user.username}")
     else:
-        return render_templete('users/register.html', form=form)
+        return render_template('/register.html', form=form)
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
